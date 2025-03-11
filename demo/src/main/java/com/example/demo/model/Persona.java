@@ -3,6 +3,7 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Persona {
 
     @Id
@@ -17,6 +18,15 @@ public class Persona {
 
     @Column(name = "email",nullable = false, length = 50)
     private String email;
+
+    public Persona() {
+    }
+
+    public Persona(String nombres, String apellidos, String email) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
