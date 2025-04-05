@@ -24,6 +24,9 @@ public class CursoProfesor implements Serializable{
     @Column(name = "semestre", nullable = false)
     private Integer semestre;
 
+    @ManyToOne
+    private CursosProfesores cursosProfesores;
+
     public CursoProfesor() {}
 
     public CursoProfesor(Profesor profesor, Curso curso, Integer anno, Integer semestre) {

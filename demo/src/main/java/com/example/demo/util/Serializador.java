@@ -1,6 +1,5 @@
 package com.example.demo.util;
 
-import com.example.demo.model.Persona;
 import javax.crypto.*;
 import java.io.*;
 import java.security.GeneralSecurityException;
@@ -59,12 +58,12 @@ public class Serializador {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Persona> cargarDatos() {
+    public <T> List<T> cargarDatos() {
         try (FileInputStream fis = new FileInputStream(filePath);
             CipherInputStream cis = new CipherInputStream(fis, getCipher(Cipher.DECRYPT_MODE));
             ObjectInputStream ois = new ObjectInputStream(cis)) {
             
-            return (List<Persona>) ois.readObject();
+            return (List<T>) ois.readObject();
         } catch (FileNotFoundException e) {
             return new ArrayList<>();
         } catch (Exception e) {
